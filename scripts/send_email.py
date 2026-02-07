@@ -5,7 +5,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
-def send_email(text):
+def send_email(theme, text):
     sender_email = "anufrievv788@gmail.com"
     receiver_email = "government_nn52@mail.ru"
     password = "jqpr ubuq zrhs dxam"
@@ -13,13 +13,12 @@ def send_email(text):
     message = MIMEMultipart()
     message["From"] = sender_email
     message["To"] = receiver_email
-    message["Subject"] = "Добры вечер"
+    message["Subject"] = theme
 
     body = str(text)
     message.attach(MIMEText(body, "plain"))
 
-    # Добавление вложения
-    filename = "img.JPG"
+    filename = "cat.jpg"
     with open(filename, "rb") as attachment:
         part = MIMEBase("application", "octet-stream")
         part.set_payload(attachment.read())
@@ -36,4 +35,3 @@ def send_email(text):
         server.starttls()
         server.login(sender_email, password)
         server.send_message(message)
-
