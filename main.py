@@ -1,4 +1,5 @@
 import flet as ft
+from scripts.send_email import send_email
 
 
 def main(page: ft.Page):
@@ -37,6 +38,7 @@ def main(page: ft.Page):
         nonlocal counter
         counter += 1
         counter_text.value = f"Счетчик: {counter}"
+        send_email(str(counter))
         page.update()
 
     def reset_counter(e):
