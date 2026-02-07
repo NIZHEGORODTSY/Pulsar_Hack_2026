@@ -1,15 +1,16 @@
 import flet as ft
 
+
 def main(page: ft.Page):
     # Настройки страницы
     page.title = "Простое приложение"
     page.theme_mode = ft.ThemeMode.SYSTEM
     page.padding = 20
     page.window_full_screen = True  # для мобилок
-    
+
     # Переменные состояния
     counter = 0
-    
+
     # Элементы интерфейса
     title = ft.Text(
         "Добро пожаловать!",
@@ -17,33 +18,33 @@ def main(page: ft.Page):
         weight=ft.FontWeight.BOLD,
         text_align=ft.TextAlign.CENTER
     )
-    
+
     subtitle = ft.Text(
         "Простое приложение на Flet",
         size=16,
         text_align=ft.TextAlign.CENTER,
         color=ft.Colors.GREY
     )
-    
+
     counter_text = ft.Text(
         f"Счетчик: {counter}",
         size=24,
         weight=ft.FontWeight.W_500
     )
-    
+
     # Кнопки
     def increment_counter(e):
         nonlocal counter
         counter += 1
         counter_text.value = f"Счетчик: {counter}"
         page.update()
-    
+
     def reset_counter(e):
         nonlocal counter
         counter = 0
         counter_text.value = f"Счетчик: {counter}"
         page.update()
-    
+
     def show_dialog(e):
         dlg = ft.AlertDialog(
             title=ft.Text("Уведомление"),
@@ -52,14 +53,14 @@ def main(page: ft.Page):
         page.dialog = dlg
         dlg.open = True
         page.update()
-    
+
     increment_btn = ft.ElevatedButton(
         "Увеличить",
         on_click=increment_counter,
         icon=ft.Icons.ADD,
         width=150
     )
-    
+
     reset_btn = ft.ElevatedButton(
         "Сбросить",
         on_click=reset_counter,
@@ -68,14 +69,14 @@ def main(page: ft.Page):
         color=ft.Colors.WHITE,
         bgcolor=ft.Colors.RED
     )
-    
+
     action_btn = ft.ElevatedButton(
         "Показать диалог",
         on_click=show_dialog,
         icon=ft.Icons.INFO,
         width=200
     )
-    
+
     # Контейнеры для группировки
     header = ft.Column(
         controls=[
@@ -85,7 +86,7 @@ def main(page: ft.Page):
         ],
         horizontal_alignment=ft.CrossAxisAlignment.CENTER
     )
-    
+
     counter_section = ft.Column(
         controls=[
             counter_text,
@@ -98,7 +99,7 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         spacing=20
     )
-    
+
     # Навигация (опционально)
     navigation_rail = ft.NavigationRail(
         selected_index=0,
@@ -123,7 +124,7 @@ def main(page: ft.Page):
             ),
         ],
     )
-    
+
     # Основной контейнер с содержимым
     content = ft.Container(
         content=ft.Column(
@@ -147,7 +148,7 @@ def main(page: ft.Page):
         padding=20,
         expand=True
     )
-    
+
     # Основной макет (с навигацией или без)
     if page.width > 600:  # Для планшетов/горизонтальной ориентации
         page.add(
@@ -158,6 +159,7 @@ def main(page: ft.Page):
         )
     else:  # Для мобильных телефонов
         page.add(content)
+
 
 # Запуск приложения
 ft.app(
