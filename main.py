@@ -3,9 +3,9 @@ import flet as ft
 def main(page: ft.Page):
     # Настройки страницы
     page.title = "Простое приложение"
-    page.theme_mode = ft.ThemeMode.LIGHT  # или DARK, SYSTEM
+    page.theme_mode = ft.ThemeMode.SYSTEM
     page.padding = 20
-    page.window_full_screen = True  # Для мобильных устройств
+    page.window_full_screen = True  # для мобилок
     
     # Переменные состояния
     counter = 0
